@@ -417,3 +417,30 @@ export enum ControlValues {
   Unordered = 'unordered-list-item',
 }
 ```
+
+# type declaration
+```jsx
+declare module 'draft-js-markdown-shortcuts-plugin' {
+  import { EditorPlugin } from 'draft-js-plugins-editor';
+  export default function createMarkdownShortcutsPlugin(): EditorPlugin;
+}
+
+declare module 'draftjs-utils' {
+  import { DraftBlockRenderConfig, DraftStyleMap, EditorState } from 'draft-js';
+  import React from 'react';
+
+  export function changeDepth(
+    editorState: EditorState,
+    adjustment: number,
+    maxDepth: number,
+  ): EditorState;
+
+  export function handleNewLine(
+    editorState: EditorState,
+    event: React.KeyboardEvent,
+  ): EditorState;
+
+  export function getCustomStyleMap(): DraftStyleMap | undefined;
+  export const blockRenderMap: Immutable.Map<string, DraftBlockRenderConfig>;
+}
+```
